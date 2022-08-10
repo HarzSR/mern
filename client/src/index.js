@@ -3,15 +3,32 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
+import memories from './images/memories.png';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Container maxWidth={ "lg" }>
+        <AppBar position={ "static" } color={ "inherit" }>
+            <Typography variant={ "h2" } align={ "center" }>
+                Memories
+            </Typography>
+            <img src={ memories } alt="Memories Image" height={ 120 } width={ 120 } align={ "center" }/>
+        </AppBar>
+        <Grow in>
+            <Container>
+                <Grid container justify={ "space-between" } alignItems={ "stretch" } spacing={ 4 }>
+                    <Grid item xs={ 12 } sm={ 7 }>
+                        <Posts />
+                    </Grid>
+                    <Grid item xs={ 12 } sm={ 4 }>
+                        <Form />
+                    </Grid>
+                </Grid>
+            </Container>
+        </Grow>
+    </Container>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
